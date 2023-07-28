@@ -1,8 +1,11 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const createPage = require(`.utils/generatedMarkdown.js`);
+
 // TODO: Create an array of questions for user input
-inquirer.prompt([
+const questions = () => {
+return inquirer.prompt([
   {
     type: "input",
     name: "title",
@@ -14,14 +17,14 @@ inquirer.prompt([
     message: "Please provide a description of your project.",
   },
   {
-    type: "confirm",
+    type: "input",
     name: "deployment",
-    message: "Do you have a deployed site?",
+    message: "Do you have a deployed site? If so, provide URL. If not, input N/A.",
   },
   {
-    type: "confirm",
+    type: "input",
     name: "image",
-    message: "Do you have an image of deployed site?",
+    message: "Do you have an image of deployed site? If so, provide image. If not, input N/A.",
   },
   {
     type: "input",
@@ -62,6 +65,7 @@ inquirer.prompt([
     ],
   },
 ]);
+}
 const { title, description, deployment, image, install, usage, contributors, license } = inquirer
 // TODO: Create a function to write README file
 .then((response) => {
@@ -97,6 +101,10 @@ const { title, description, deployment, image, install, usage, contributors, lic
     ## License
     
     ${license}`
+
+    const fileName = `${response.name.toLowerCase().split(' ').join('')}.readme`
+    fs.writeFile(fileName, README, (err) =>
+    err ? console.log(err) : console.log(`You have successfully created a file for ${response.name}`))
 })
 
 // TODO: Create a function to initialize app
