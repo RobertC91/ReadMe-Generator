@@ -57,13 +57,13 @@ return inquirer.prompt([
   },
   {
     type: "input",
-    name: "contributors",
-    message: "Provide contributors.",
+    name: "contributing",
+    message: "Provide information on how to contribute.",
     validate: nameInput => {
         if (nameInput) {
             return true;
         } else {
-            console.log('Please provide contributors or type N/A')
+            console.log('Please provide contributing instructions or type N/A')
         }
     }
   },
