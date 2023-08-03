@@ -11,36 +11,97 @@ return inquirer.prompt([
     type: "input",
     name: "title",
     message: "What is the title of your project?",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please enter a Title')
+        }
+    }
   },
   {
     type: "input",
     name: "description",
     message: "Please provide a description of your project.",
-  },
-  {
-    type: "input",
-    name: "deployment",
-    message: "Do you have a deployed site? If so, provide URL. If not, input N/A.",
-  },
-  {
-    type: "input",
-    name: "image",
-    message: "Do you have an image of deployed site? If so, provide image. If not, input N/A.",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide a Description')
+        }
+    }
   },
   {
     type: "input",
     name: "install",
     message: "Provide installation requirements for your project.",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide Installation Requirements or type N/A.')
+        }
+    }
   },
   {
     type: "input",
     name: "usage",
     message: "Provide usage details for your project",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please describe how to use your project or type N/A')
+        }
+    }
   },
   {
     type: "input",
     name: "contributors",
     message: "Provide contributors.",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide contributors or type N/A')
+        }
+    }
+  },
+  {
+    type: "input",
+    name: "tests",
+    message: "What programs are required to test your project?",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please identify programs required or type N/A')
+        }
+    }
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Please provide an email you can be reached at.",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide an Email')
+        }
+    }
+  },
+  {
+    type: "input",
+    name: "github",
+    message: "Please provide your GitHub name.",
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please provide your GitHub name')
+        }
+    }
   },
   {
     type: "list",
@@ -50,20 +111,19 @@ return inquirer.prompt([
       "MIT License",
       "GNU General Public License v3.0",
       "Apache License 2.0",
-      'BSD 3-Clause "New" or "Revised" License',
-      'BSD 2-Clause "Simplified" License',
-      "Boost Software License 1.0",
-      "Creative Commons Zero v1.0 Universal",
-      "Eclipse Public License 2.0",
-      "GNU Affero General Public License v3.0",
-      "GNU General Public License v2.0",
-      "GNU Lesser General Public License v2.1",
       "Mozilla Public License 2.0",
-      "The Unlicense",
+      "Unlicensed",
     ],    
     default: [
         "MIT License"
     ],
+    validate: nameInput => {
+        if (nameInput) {
+            return true;
+        } else {
+            console.log('Please choose a License')
+        }
+    }
   },
 ]);
 }

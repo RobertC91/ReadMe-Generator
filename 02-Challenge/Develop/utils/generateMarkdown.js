@@ -1,31 +1,22 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
 // TODO: Create a function to generate markdown for README
-const generateREADME = ({ title, description, deployment, image, install, usage, contributors, license }) =>
-    `# ${title}
+const generateREADME = ({ title, description, install, usage, contributors, tests, email, github, license }) =>
+  `# ${title}
+
+    ## License
+
+    ${license}
 
     ## Description
     
     ${description}
-    
-    
-    ## Here is a link to the deployed site on GitHub:
-    
-    ${deployment}
-    
-    ## As well as an image showcasing the Start Screen of the page:
-    
-    ${image}
+
+    ## Table of Contents
+ 
+      - Installation
+      - Usage
+      - Contributors
+      - Tests
+      - Questions
     
     ## Installation
     
@@ -39,11 +30,16 @@ const generateREADME = ({ title, description, deployment, image, install, usage,
     ## Contributors
     
     ${contributors}
+
+    ## Tests
+
+    ${tests}
+
+    ## Questions
+
+    If you have any questions feel free to contact me via ${email}, you can also view more of my projects at https://github.com/${github}.
     
-    ## License
-    
-    ${license}`
-;
+    `;
 
 
 module.exports = generateREADME;
