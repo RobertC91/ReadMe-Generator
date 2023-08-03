@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
-const fs = require("fs");
-const createPage = require(`.utils/generatedMarkdown.js`);
+// const fs = require("fs");
+const { writeFile } = require('fs').promises
+const generateREADME = require(`./utils/generateMarkdown.js`);
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -66,49 +67,15 @@ return inquirer.prompt([
   },
 ]);
 }
-const { title, description, deployment, image, install, usage, contributors, license } = inquirer
+
 // TODO: Create a function to write README file
-.then((response) => {
-    const README = 
-    `# ${title}
-
-    ## Description
-    
-    ${description}
-    
-    
-    ## Here is a link to the deployed site on GitHub:
-    
-    ${deployment}
-    
-    ## As well as an image showcasing the Start Screen of the page:
-    
-    ${image}
-    
-    ## Installation
-    
-    ${install}
-    
-    ## Usage
-    
-    ${usage}
-    
-    
-    ## Contributors
-    
-    ${contributors}
-    
-    ## License
-    
-    ${license}`
-
-    const fileName = `${response.name.toLowerCase().split(' ').join('')}.readme`
-    fs.writeFile(fileName, README, (err) =>
-    err ? console.log(err) : console.log(`You have successfully created a file for ${response.name}`))
-})
-
 // TODO: Create a function to initialize app
-function init() {}
+const init = () => {
+    questions()
+    .then((answers) => writeFile('README.md', generateREADME(answers)))
+    .then(() => console.log('You have successfully created a README'))
+    .catch((err) => console.log(err))
+};
 
 // Function call to initialize app
 init();
