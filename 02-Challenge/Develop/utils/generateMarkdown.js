@@ -14,7 +14,7 @@ const generateREADME = ({ title, description, install, usage, contributing, test
  
     - Installation
     - Usage
-    - Contributors
+    - Contributing
     - Tests
     - Questions
     
